@@ -1,4 +1,4 @@
-const runtime = require.resolve('./runtime');
+const runtime = require.resolve('./runtime').replace(/\\/g, '/');
 
 const ReactRefreshHotModuleInjection = `
 const runtime = require('${runtime}').default;
