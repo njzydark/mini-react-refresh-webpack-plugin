@@ -3,6 +3,10 @@ import { Compiler, RuleSetRule, WebpackPluginInstance } from 'webpack';
 type PluginOptions = {
   entryNames?: string[];
   exclude?: RegExp[];
+  autoInjectBabelLoader?: boolean;
+  babelLoaderOptions?: {
+    [key: string]: any;
+  };
 };
 
 export class MiniReactRefreshWebpackPlugin implements WebpackPluginInstance {
@@ -11,7 +15,10 @@ export class MiniReactRefreshWebpackPlugin implements WebpackPluginInstance {
 
   constructor(options?: PluginOptions) {
     this.name = MiniReactRefreshWebpackPlugin.name;
-    this.options = options;
+    this.options = {
+      autoInjectBabelLoader: true,
+      ...options
+    };
   }
 
   apply(compiler: Compiler) {
@@ -46,13 +53,14 @@ export class MiniReactRefreshWebpackPlugin implements WebpackPluginInstance {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
-            plugins: [require.resolve('react-refresh/babel')]
+            plugins: [require.resolve('react-refresh/babel')],
+            ...this.options?.babelLoaderOptions
           }
         }
       ]
     };
 
-    if (moduleRules.length > 0) {
+    if (this.options?.autoInjectBabelLoader && moduleRules.length > 0) {
       moduleRules.push(newRule);
     }
 

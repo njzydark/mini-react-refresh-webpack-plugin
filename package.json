@@ -1,6 +1,6 @@
 {
   "name": "@njzy/mini-react-refresh-webpack-plugin",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "engines": {
     "node": ">=12"
   },
@@ -48,6 +48,9 @@
     "sockjs-client": "^1.5.1",
     "typescript": "^4.3.5",
     "webpack": "^5.49.0"
+  },
+  "peerDependencies": {
+    "react-refresh": "^0.10.0"
   },
   "keywords": [
     "webpack-plugin",
