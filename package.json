@@ -1,6 +1,6 @@
 {
   "name": "@njzy/mini-react-refresh-webpack-plugin",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "engines": {
     "node": ">=12"
   },
@@ -50,7 +50,7 @@
     "webpack": "^5.49.0"
   },
   "peerDependencies": {
-    "react-refresh": "^0.10.0"
+    "react-refresh": "0.x"
   },
   "keywords": [
     "webpack-plugin",
@@ -63,5 +63,8 @@
   "bugs": {
     "url": "https://github.com/njzydark/mini-react-refresh-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/njzydark/mini-react-refresh-webpack-plugin#readme"
+  "homepage": "https://github.com/njzydark/mini-react-refresh-webpack-plugin#readme",
+  "dependencies": {
+    "source-map": "^0.7.3"
+  }
 }
